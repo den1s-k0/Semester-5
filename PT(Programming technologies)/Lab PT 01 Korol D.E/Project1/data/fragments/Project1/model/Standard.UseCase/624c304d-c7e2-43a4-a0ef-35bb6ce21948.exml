@@ -1,0 +1,236 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Закрыть регистрацию" version="4">
+  <OBJECT>
+    <ID name="Закрыть регистрацию" mc="Standard.UseCase" uid="624c304d-c7e2-43a4-a0ef-35bb6ce21948"/>
+    <PID name="Use Case Model" mc="Standard.Package" uid="92a6f8cd-4efc-4e7b-a7a1-5c80d009e6bf"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Закрыть регистрацию]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedEnd">
+        <OBJECT>
+          <ID name="" mc="Standard.AssociationEnd" uid="6b369db4-00ab-4ad1-a10a-1993f2275871"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Расчетную систему" mc="Standard.Actor" uid="910dd962-01b1-417d-bb9f-96e2320cf677"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="943ca789-4855-401a-99df-645edd85d5fd"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">AccesNone</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="" mc="Standard.AssociationEnd" uid="6b369db4-00ab-4ad1-a10a-1993f2275871"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="f726a9c4-83ae-4f0b-b7b5-02b2bc0c46cb"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="f726a9c4-83ae-4f0b-b7b5-02b2bc0c46cb"/>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="8dcbc826-7bbc-4a44-899c-c3f63d0e758c"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Данный вариант использования позволяет регистратору закрывать процесс
+регистрации. Конкретные курсы, на которые не записалось достаточного количества
+студентов (менее трех), отменяются. В расчетную систему передается информация о
+каждом студенте по каждому конкретному курсу, чтобы студенты могли внести
+оплату за курсы.
+Основной поток собы тий
+1. Регистратор запрашивает прекращение регистрации.
+2. Система подтверждает возможность закрыть регистрацию и фиксирует, что
+регистрация закрыта.
+3. Для каждого предлагаемого курса, который открыт для регистрации,
+выполняется:
+3.1. Система подтверждает, что курс взялся провести какой-либо профессор, и что
+на курс записалось не менее трех студентов.
+3.2. Для каждого графика студента, в котором курс помечен основным и не
+зафиксированным, выполняется подчиненный поток «Зафиксировать курс в
+графике».
+4. Для каждого студенческого графика система проверяет наличие в нем 4
+зафиксированных курсов; если их недостаточно, система дополняет график
+альтернативными курсами по схеме, описанной в шаге 3 основного потока.
+5. Для каждого открытого предлагаемого курса выполняется:
+5.1. Система подтверждает, что в списке не менее трех студентов.
+5.2. Система помечает курс как закрытый.
+6. Система запрашивает связь с расчетной системой.
+7. Расчетная система подтверждает готовность к приему данных.
+8. Система передает в расчетную систему графики студентов.
+9. Расчетная система подтверждает прием графиков студентов.
+Подчиненные потоки:
+3.2. Зафиксировать курс в графике
+1. Система подтверждает, что курс открыт для регистрации.
+2. Система добавляет студента в список записавшихся на курс.
+3. Система помечает курс в графике как зафиксированный.
+4. Система помечает курс как закрытый, если в списке студентов содержится 10
+записей.
+]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="74fdd4c4-bf01-4508-8234-3d788062394c"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[...]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="constraint" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-251b-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="c48dc38b-e5c4-4169-a4d0-aeb8b2783263"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[...]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="non-functional constraint" mc="Infrastructure.NoteType" uid="00bc0c08-0000-242c-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="5e172566-a91a-4895-9a35-247c8de8ef0f"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[2А. Регистрация не может быть прекращена
+1. Система обнаруживает, что процесс регистрации нельзя прекратить немедленно.
+2. Система выдает сообщение регистратору и предлагает выбрать повтор или отмену
+закрытия регистрации.
+3. Регистратор сообщает свой выбор.
+4. Система в соответствии с выбором либо продолжает выполнение шага 2
+основного потока, либо завершает выполнение варианта использования.
+3.1А. Курс никто не ведет
+1. Система помечает курс как отмененный.
+2. Система исключает данный курс из каждого содержащего его графика и удаляет
+студентов из списка записавшихся на курс.
+3. Система выбирает следующий курс и продолжает выполнение шага 3 основного
+потока.
+3.1 Б. На курс записалось мало студентов
+1. Система выбирает следующий курс и продолжает выполнение шага 3 основного
+потока.
+3.2.1 А Регистрация на курс закрыта
+1. Выполнение подчиненного потока «Зафиксировать курс в графике» завершается.
+5.1А. Менее трех студентов на курсе
+1. Пока в списке меньше 3 студентов и есть графики, в которых меньше 4
+зафиксированных курсов выполняется подчиненный поток «Зафиксировать курс в
+графике»
+2. Система подтверждает, что на курсе 3 или более студентов.
+3. Продолжается выполнение основного потока с шага 5.2.
+5.1А.2А. Невозможно добавить студентов на курс
+1. Система обнаруживает, что на курсе 2 или менее студентов.
+2. Система помечает курс как отмененный.
+3. Система вычеркивает его из всех графиков и переходит к следующему открытому
+курсу.
+3. Продолжается выполнение основного потока с шага 5.
+7А. Расчетная система недоступна
+1. Система ожидает некоторое установленное время.
+2. Выполнение передается на шаг 6 основного потока.
+]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="exception" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2519-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="1c3b2b05-dd49-409d-ab07-959fff7874fc"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Перед началом выполнения данного варианта использования регистратор должен
+войти в систему.]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="precondition" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2515-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="06dc0b2a-b2da-4a03-9fae-665d4618f64d"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Если вариант использования завершится успешно, регистрация закрывается,
+графики студентов передаются в расчетную систему. В противном случае
+регистрация остается открытой.]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="postcondition" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2517-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

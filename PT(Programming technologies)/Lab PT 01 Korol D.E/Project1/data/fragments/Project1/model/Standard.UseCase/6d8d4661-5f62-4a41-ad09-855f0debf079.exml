@@ -1,0 +1,267 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Зарегистрироваться на курсы" version="4">
+  <OBJECT>
+    <ID name="Зарегистрироваться на курсы" mc="Standard.UseCase" uid="6d8d4661-5f62-4a41-ad09-855f0debf079"/>
+    <PID name="Use Case Model" mc="Standard.Package" uid="92a6f8cd-4efc-4e7b-a7a1-5c80d009e6bf"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Зарегистрироваться на курсы]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedEnd">
+        <OBJECT>
+          <ID name="" mc="Standard.AssociationEnd" uid="5e6a94c5-36c9-4104-bf57-6467f84cb330"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">AccesNone</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Каталог курсов" mc="Standard.Actor" uid="737e1b9b-d224-40f0-a958-f9b9abffd1d8"/>
+            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="" mc="Standard.AssociationEnd" uid="4e63702c-37df-47fa-b461-f07323d39ad9"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsAssociation</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">AccesNone</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[0]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="" mc="Standard.AssociationEnd" uid="5e6a94c5-36c9-4104-bf57-6467f84cb330"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="48a4714f-8a0a-4cb9-8c75-ff34a8d225d0"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="48a4714f-8a0a-4cb9-8c75-ff34a8d225d0"/>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="e232da03-f2b3-460f-b99c-ddf40dd4815d"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Данный вариант использования позволяет студенту зарегистрироваться на
+конкретные курсы в текущем семестре. Студент может изменить свой выбор
+(обновить или удалить курсы), если изменение выполняется в установленное время
+в начале семестра. Система каталога курсов предоставляет список всех конкретных
+курсов текущего семестра.
+Основной поток событий
+1. Студент сообщает о желании зарегистрироваться на курсы.
+2. Система подтверждает, что регистрация на курсы в текущем семестре открыта.
+3. Система запрашивает связь с каталогом курсов.
+4. Каталог курсов подтверждает, что связь установлена.
+5. Система запрашивает требуемое действие (создать график, обновить график,
+удалить график, утвердить график).
+6. Студент сообщает системе свой выбор.
+7. Система подтверждает, что требуемое действие можно выполнить.
+8. Согласно выбору студента выполняется один из подчиненных потоков (создать,
+обновить, удалить или утвердить график).
+9. Система заканчивает сеанс связи с каталогом курсов.
+10. Каталог курсов подтверждает, что сеанс закончен.
+Под чиненные потоки событий:
+8А. Создать график
+1. Система запрашивает у каталога курсов список доступных конкретных курсов.
+2. Каталог курсов передает системе запрашиваемый список.
+3. Система выводит список курсов и пустой план-график.
+4. Студент выбирает из списка 4 основных курса и 2 альтернативных курса.
+5. Система создает график студента и заносит в него выбранные курсы, помечая их
+как незафиксированные.
+6. Система сообщает, что создание графика завершено.
+7. Выполнение переходит на шаг 9 основного потока.
+8Б. Обновить график
+1. Система выводит текущий график студента.
+2. Система запрашивает у каталога курсов список доступных конкретных курсов.Каталог
+курсов передает системе запрашиваемый список.
+3. Система выводит список курсов.
+4. Студент обновляет свой выбор курсов, удаляя или добавляя конкретные курсы.
+5. Система обновляет график в соответствии с пожеланиями студента. Для каждого
+зафиксированного курса, удаленного из графика, система удаляет студента из
+списка студентов, записавшихся на курс. Каждый добавленный курс система
+помечает как незафиксированный.
+6. Система сообщает, что обновление графика завершено.
+7. Выполнение переходит на шаг 9 основного потока.
+8В. Удалить график
+1. Система выводит текущий график студента.
+2. Система запрашивает у студента подтверждения удаления графика.
+3. Студент подтверждает удаление.
+4. Система удаляет график. Для каждого зафиксированного курса из удаляемого
+графика, система удаляет студента из списка студентов, записавшихся на курс.
+5. Выполнение переходит на шаг 9 основного потока.
+8Г. Утвердить график
+1. Для каждого незафиксированного курса в графике выполняется:
+1.1. Система подтверждает выполнение студентом предварительных требований
+(прохождение определенных курсов), и подтверждает, что курс открыт для
+регистрации, и отсутствуют конфликты (в графике не должно быть
+зафиксированного курса, читаемого в тот же день и на той же паре, что и
+проверяемый курс).
+1.2. Система добавляет студента в список записавшихся на курс.
+1.3. Система помечает курс в графике как зафиксированный.
+1.4. Система помечает курс как закрытый, если в списке студентов содержится 10
+записей.
+2. Система сообщает студенту результаты утверждения графика.
+3. Выполнение переходит на шаг 9 основного потока.
+]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="13db0210-125b-48ba-b00a-d8d6788b004e"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[...]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="constraint" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-251b-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="119dbded-0e32-4afa-aaa2-3a24763bc58d"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[...]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="non-functional constraint" mc="Infrastructure.NoteType" uid="00bc0c08-0000-242c-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="6c36c85e-4a31-4131-bec0-f847000b8ae3"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[2А. Регистрация на курсы закрыта
+1. Система обнаруживает, что регистрация на курсы в текущем семестре закрыта.
+2. Система выдает сообщение об ошибке.
+3. Вариант использования завершается.
+3А. Каталог курсов недоступен
+1. Система обнаруживает, что невозможно установить связь с каталогом курсов.
+2. Система выдает сообщение об ошибке.
+3. Вариант использования завершается.
+8Г.1.1А. Не выполнены предварительные требования, курс заполнен, или имеют
+место конфликты графика
+1. Система обнаруживает, что студент не выполнил необходимые предварительные
+требования, или выбранный им конкретный курс заполнен, или имеют место
+конфликты графика.
+2. Система выдает сообщение об ошибке.
+3. Система переходит к следующему незафиксированному курсу и продолжает
+выполнение потока «Утвердить график»
+7А. График не найден
+1. Система обнаруживает, что требуемое действие (обновить, удалить или утвердить
+график) нельзя выполнить, так как график студента на текущий семестр отсутствует.
+2. Система выдает сообщение об ошибке.
+3. Выполнение переходит на шаг 5 основного потока.
+7Б. График найден
+1. Система обнаруживает, что требуемое действие (создать график) нельзя
+выполнить, так как график студента на текущий семестр создан ранее.
+2. Система выдает сообщение об ошибке.
+3. Выполнение переходит на шаг 5 основного потока.
+8В.3А. Удаление отменено
+1. Студент отменяет удаление графика.
+2. Выполнение переходит на шаг 5 основного потока.
+]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="exception" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2519-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="87e6c051-3f42-4326-9fcb-11cf93898b2f"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Перед началом выполнения данного варианта использования студент должен войти
+в систему.
+]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="precondition" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2515-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="12649e1e-3c54-4f22-8202-ec15f4a7f368"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Если вариант использования завершится успешно, система создаст, обновит, удалит
+или утвердит график студента в соответствии с выбором пользователя. В противном
+случае гарантируется что: при закрытой регистрации изменения в графики
+студентов не производятся; при недоступном каталоге курсов изменения в графики
+студентов не производятся; при утверждении графика студента игнорируются
+курсы, для которых не выполнены предварительные требования, или которые
+закрыты, или которые вызывают конфликты в графике; при отсутствии графика на
+текущий семестр его обновление, удаление или утверждение не производятся; при
+наличии графика на текущий семестр добавление еще одного графика не
+производится.]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="postcondition" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2517-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

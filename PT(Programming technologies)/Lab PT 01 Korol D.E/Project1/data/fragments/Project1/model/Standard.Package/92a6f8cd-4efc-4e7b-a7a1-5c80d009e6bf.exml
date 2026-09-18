@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Use Case Model" version="4">
+  <OBJECT>
+    <ID name="Use Case Model" mc="Standard.Package" uid="92a6f8cd-4efc-4e7b-a7a1-5c80d009e6bf"/>
+    <PID name="Use Case View" mc="Standard.Package" uid="74375040-97a6-4d97-9261-ca2f9f056eee"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Use Case Model]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Студент" mc="Standard.Actor" uid="1ecc23d2-fefe-47cc-b7ea-4fecf0305cb2"/>
+        <COMPID name="Профессор" mc="Standard.Actor" uid="2a84d3aa-a7f5-4601-ae48-2f4ea91809fc"/>
+        <COMPID name="Регистратор" mc="Standard.Actor" uid="bde93abf-6e06-45da-8158-6b0e2f88953c"/>
+        <COMPID name="Каталог курсов" mc="Standard.Actor" uid="737e1b9b-d224-40f0-a958-f9b9abffd1d8"/>
+        <COMPID name="Расчетную систему" mc="Standard.Actor" uid="910dd962-01b1-417d-bb9f-96e2320cf677"/>
+        <COMPID name="Зарегистрироваться на курсы" mc="Standard.UseCase" uid="6d8d4661-5f62-4a41-ad09-855f0debf079"/>
+        <COMPID name="Войти в
+систему" mc="Standard.UseCase" uid="936a4d03-7667-4327-bde4-7fa1f4c4697f"/>
+        <COMPID name="Просмотреть табель" mc="Standard.UseCase" uid="f259d3e9-77d9-45b4-9b31-2fbfd66f4d9f"/>
+        <COMPID name="Выбрать читаемые курсы" mc="Standard.UseCase" uid="867da652-18fa-47c5-ba16-404f515cfd88"/>
+        <COMPID name="Поставить оценки" mc="Standard.UseCase" uid="10c270fa-c931-4adf-939b-c70083394d84"/>
+        <COMPID name="CRUD данных о
+профессорах" mc="Standard.UseCase" uid="ac567fc6-5616-45ac-81d2-dbcf36994187"/>
+        <COMPID name="CRUD данных о студентах" mc="Standard.UseCase" uid="3e5281a2-dd5c-41ee-a08d-6e5de980a684"/>
+        <COMPID name="Открыть регистрацию" mc="Standard.UseCase" uid="308445ab-6c98-44da-94cf-da176148c042"/>
+        <COMPID name="Закрыть регистрацию" mc="Standard.UseCase" uid="624c304d-c7e2-43a4-a0ef-35bb6ce21948"/>
+        <COMPID name="Пользователь" mc="Standard.Actor" uid="b070d57a-d5ba-4459-8212-1e7f4cb4d8e1"/>
+        <COMPID name="Посмотреть список
+студентов на курсе" mc="Standard.UseCase" uid="fe101ae4-5200-4067-bfa3-4ef8aa0ceb7d"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Main" mc="Standard.UseCaseDiagram" uid="7015b23e-f45b-4243-84ab-5ca529c04223"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
