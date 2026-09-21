@@ -1,3 +1,5 @@
+package input;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -22,6 +24,16 @@ public class ConsoleIO {
         double[] answer = new double[size];
         for(int i = 0; i < size; i++) {
             answer[i] = in.nextDouble();
+            try {
+                answer[i] = in.nextDouble();
+                if (answer[i] > 0) {
+                    break;
+                }
+                System.out.println("Size must be >0");
+            } catch (InputMismatchException e) {
+                System.out.println("Size must be integer");
+                in.nextLine();
+            }
         }
         in.close();
         return answer;

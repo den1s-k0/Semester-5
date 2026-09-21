@@ -1,3 +1,5 @@
+package math;
+
 public class MatrixUtils {
 
     public static void showMatrix(double[][] matrix) {
