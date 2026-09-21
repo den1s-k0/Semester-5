@@ -16,26 +16,23 @@ public class ConsoleIO {
                 }
                 System.out.println("Size must be >0");
             } catch (InputMismatchException e) {
-                System.out.println("Size must be integer");
+                System.out.println("Size must be a number");
                 in.nextLine();
             }
         }
         System.out.print("Enter " + size + " answers: ");
         double[] answer = new double[size];
         for(int i = 0; i < size; i++) {
-            answer[i] = in.nextDouble();
-            try {
-                answer[i] = in.nextDouble();
-                if (answer[i] > 0) {
+            while (true) {
+                try {
+                    answer[i] = in.nextDouble();
                     break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Value must be a number");
+                    in.nextLine();
                 }
-                System.out.println("Size must be >0");
-            } catch (InputMismatchException e) {
-                System.out.println("Size must be integer");
-                in.nextLine();
             }
         }
-        in.close();
         return answer;
     }
 }

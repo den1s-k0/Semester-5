@@ -7,22 +7,23 @@ public class MatrixUtils {
             for (double j : i ) {
                 System.out.printf("%-12.4f", j);
             }
-            System.out.print("\n");
+            System.out.println();
         }
-        System.out.print("\n");
+        System.out.println();
     }
 
     public static void showResult(double[] result) {
         for (double i : result) {
             System.out.printf("%-12.4f", i);
         }
-        System.out.print("\n");
+        System.out.println();
     }
 
-    public static void showComparing(double[] mas1, double[] mas2, double EPS) {
+    public static void showComparing(double[] mas1, double[] mas2, double eps) {
         for (int i = 0; i < mas1.length; i++) {
-            System.out.printf("%-12s", (Math.abs(mas1[i] - mas2[i]) < EPS) ? "equal" : "not equal");
+            System.out.printf("%-12s", (Math.abs(mas1[i] - mas2[i]) < eps) ? "equal" : "not equal");
         }
+        System.out.println();
     }
 }
 
