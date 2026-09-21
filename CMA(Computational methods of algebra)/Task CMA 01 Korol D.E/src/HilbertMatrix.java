@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class HilbertMatrix {
     private int sizeVert;
     private int sizeGor;
@@ -17,11 +19,10 @@ public class HilbertMatrix {
     }
 
     public void showMatrix() {
-        System.out.println("SIZE: " + Integer.toString(sizeVert));
+//        System.out.println("SIZE: " + Integer.toString(sizeVert));
         for (double[] i : matrix) {
             for (double j : i ) {
-                System.out.print(j);
-                System.out.print(" ");
+                System.out.printf("%-12.4f", j);
             }
             System.out.print("\n");
         }
@@ -60,10 +61,49 @@ public class HilbertMatrix {
         return result;
     }
 
-    public void showResult(double[] result) {
+    public static void showResult(double[] result) {
         System.out.println("Result: ");
         for (double i : result) {
-            System.out.println(Double.toString(i) + " ");
+            System.out.printf("%-12.4f", i);
         }
+        System.out.print("\n");
+    }
+
+    public static double[] enterTask(){
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter matrix size: ");
+        int size = in.nextInt();
+        System.out.print("Enter " + Integer.toString(size) + " answers: ");
+        double[] answer = new double[size];
+        for(int i = 0; i < size; i++) {
+            answer[i] = in.nextDouble();
+        }
+        return answer;
+    }
+
+        public static void completeTask() {
+            final double EPS = 1e-9;
+            double[] answer = HilbertMatrix.enterTask();
+            HilbertMatrix A = new HilbertMatrix(answer.length);
+
+            System.out.println("Hilbert matrix: ");
+            A.showMatrix();
+            A.lowZeros();
+    //        A.showMatrix();
+            A.upZeros();
+    //        A.showMatrix();
+
+            System.out.print("Task ");
+            HilbertMatrix.showResult(answer);
+
+            System.out.print("My ");
+            double[] result = A.xResults();
+            HilbertMatrix.showResult(result);
+
+            System.out.println("Compare: ");
+            for (int i = 0; i < answer.length; i++) {
+                System.out.printf("%-12s", (Math.abs(answer[i] - result[i]) < EPS) ? "equal" : "not equal");
+            }
+
     }
 }
