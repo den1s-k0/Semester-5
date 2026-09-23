@@ -33,7 +33,7 @@ public class HilbertMatrix {
     }
 
     public static void completeTask() {
-        final double eps = 1e-9;
+        final double eps = 1e-10;
         double[] answer = ConsoleIO.enterTask();
         HilbertMatrix hilbertMatrix = new HilbertMatrix(answer.length);
         double[][] matrix1 = hilbertMatrix.getMatrix();
@@ -41,16 +41,18 @@ public class HilbertMatrix {
         System.out.println("Hilbert matrix: ");
         MatrixUtils.showMatrix(matrix1);
 
-        System.out.println("Task result:");
-        MatrixUtils.showResult(answer);
+        MatrixUtils.showResult("Task result:", answer);
 
-        System.out.println("My result:");
         double[] rsh = new double[hilbertMatrix.getSize()];
         rsh[0] = 1;
         double[] result = GaussianMethod.solve(matrix1, rsh);
-        MatrixUtils.showResult(result);
+        MatrixUtils.showResult("My solve result:", result);
 
-        System.out.println("Compare result: ");
-        MatrixUtils.showComparing(answer, result, eps);
+        MatrixUtils.showComparing("Compare solve result: ", answer, result, eps);
+
+        double[] pivotResult = GaussianMethod.pivotSolve(matrix1, rsh);
+        MatrixUtils.showResult("My pivot solve result:", result);
+
+        MatrixUtils.showComparing("Compare pivot solve result: ", answer, pivotResult, eps);
     }
 }
