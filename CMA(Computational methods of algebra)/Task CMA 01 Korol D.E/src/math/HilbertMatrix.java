@@ -43,8 +43,7 @@ public class HilbertMatrix {
 
         MatrixUtils.showResult("Task result:", answer);
 
-        double[] rsh = new double[hilbertMatrix.getSize()];
-        rsh[0] = 1;
+        double[] rsh = GaussianMethod.aX(matrix1, answer);
         double[] result = GaussianMethod.solve(matrix1, rsh);
         MatrixUtils.showResult("My solve result:", result);
 

@@ -3,6 +3,17 @@ package math;
 public class GaussianMethod {
     private final static double eps = 1e-15;
 
+    public static double[] aX(double[][] matrix, double[] x) {
+        int size = matrix.length;
+        double[] rsh = new double[size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                rsh[i] += matrix[i][j] * x[j];
+            }
+        }
+        return rsh;
+    }
+
     public static double[] solve(double[][] matrix, double[] rhs) {
         validate(matrix, rhs);
 
