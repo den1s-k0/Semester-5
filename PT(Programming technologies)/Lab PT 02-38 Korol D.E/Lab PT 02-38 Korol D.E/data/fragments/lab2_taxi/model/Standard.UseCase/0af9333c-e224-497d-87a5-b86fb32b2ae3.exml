@@ -1,0 +1,192 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Оформить заказ" version="4">
+  <OBJECT>
+    <ID name="Оформить заказ" mc="Standard.UseCase" uid="0af9333c-e224-497d-87a5-b86fb32b2ae3"/>
+    <PID name="Use Case View" mc="Standard.Package" uid="cb44e63d-479b-4618-8356-edc7cff62f84"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Оформить заказ]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Used">
+        <OBJECT>
+          <ID name="UseCaseDependency" mc="Standard.UseCaseDependency" uid="cc19ffe6-53bd-414e-9fe6-dd831c35147d"/>
+          <ATTRIBUTES>
+            <ATT name="Name"><![CDATA[UseCaseDependency]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Указать адрес подачи" mc="Standard.UseCase" uid="f3a6d465-af53-4a48-946f-fa84c4839e05"/>
+            </LINK>
+            <LINK relation="Extension">
+              <FOREIGNID name="include" mc="Infrastructure.Stereotype" uid="00000000-0000-9c49-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="UseCaseDependency" mc="Standard.UseCaseDependency" uid="488ee0c4-6498-4849-a94c-c7eccb972f35"/>
+          <ATTRIBUTES>
+            <ATT name="Name"><![CDATA[UseCaseDependency]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Target">
+              <ID name="Выбрать тип услуги" mc="Standard.UseCase" uid="9ac692cc-c428-462b-bcc8-4ff4969a14e2"/>
+            </LINK>
+            <LINK relation="Extension">
+              <FOREIGNID name="include" mc="Infrastructure.Stereotype" uid="00000000-0000-9c49-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="d32e51c8-f516-4a74-ab07-ca0a231cee96"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Краткое описание
+Данный вариант использования позволяет Клиенту оформить новый заказ на поездку в АИС «Такси». В процессе оформления клиент обязательно указывает адрес подачи и выбирает базовый тип услуги (класс автомобиля). Также клиент может расширить свой заказ, выбрав общие дополнительные опции (детское кресло, марка машины) или VIP-опции, если выбран соответствующий класс обслуживания.
+Основной поток событий
+1.	Клиент сообщает о желании оформить заказ.
+2.	Система подтверждает готовность к созданию заказа и проверяет отсутствие у клиента активных (незавершенных) поездок.
+3.	Система запрашивает связь с модулем геолокации и адресов.
+4.	Модуль геолокации подтверждает, что связь установлена.
+5.	Система запрашивает у клиента параметры поездки (адрес подачи, тип услуги, дополнительные услуги).
+6.	Клиент сообщает системе свой выбор и заполняет обязательные поля.
+7.	Система подтверждает, что введенные данные корректны и их можно зафиксировать.
+8.	Согласно выбору клиента последовательно выполняются обязательные подчиненные потоки (указать адрес, выбрать тип услуги), а также опциональные потоки (настроить общие или VIP-опции) при их активации.
+9.	Система заканчивает сеанс связи с модулем геолокации.
+10.	Модуль геолокации подтверждает, что сеанс закончен.
+11.	Система присваивает заказу уникальный номер и переводит его в статус «Поиск автомобиля».
+]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="53acd631-f135-4dc2-9c42-247562c44d0c"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[...]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="constraint" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-251b-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="7999eb14-d1a4-4efb-8658-4e18fec84e00"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[...]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="non-functional constraint" mc="Infrastructure.NoteType" uid="00bc0c08-0000-242c-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="e36a658f-8ab9-4ca2-84d3-d175f641b6bd"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Подчиненные потоки событий:
+8А. Указать адрес подачи
+1.	Система выводит карту и текстовое поле для ввода адреса.
+2.	Клиент вводит адрес подачи вручную или отмечает точку на интерактивной карте.
+3.	Система сверяет адрес с базой данных модуля геолокации.
+4.	Система фиксирует подтвержденный адрес в черновике заказа.
+5.	Выполнение возвращается в основной поток.
+8Б. Выбрать тип услуги
+1.	Система выводит доступные базовые тарифные планы: «Эконом» и «Бизнес».
+2.	Клиент указывает желаемый тип услуги.
+3.	Система фиксирует базовую стоимость тарифа в черновике заказа.
+4.	Выполнение возвращается в основной поток.
+8В. Выбрать дополнительные опции
+1.	Система выводит список общих надстроек к заказу.
+2.	Клиент выбирает опцию «Детское кресло» и указывает текстовое предпочтение по марке автомобиля.
+3.	Система пересчитывает итоговую стоимость с учетом наценок за опции и сохраняет их в заказе.
+4.	Выполнение возвращается в основной поток.
+8Г. Выбрать VIP-опции
+1.	Система проверяет выполнение условий (в подчиненном потоке 8Б должен быть выбран тип услуги «Бизнес»).
+2.	Система открывает премиальное меню: выбор музыки, фильмов, напитков и закусок в дорогу.
+3.	Клиент отмечает галочками желаемые VIP-компоненты.
+4.	Система привязывает выбранный пакет VIP-сервисов к текущему заказу бизнес-класса.
+5.	Выполнение возвращается в основной поток.
+
+Альтернативные потоки
+
+2А. Обнаружен активный заказ
+1.	Система обнаруживает, что за данным аккаунтом клиента уже закреплена незавершенная поездка.
+2.	Система выдает сообщение об ошибке: «Вы не можете оформить новый заказ, пока не завершен текущий».
+3.	Вариант использования завершается.
+4А. Модуль геолокации недоступен
+1.	Система обнаруживает, что невозможно установить связь с картографическим сервисом.
+2.	Система выдает сообщение об ошибке: «Сервис определения адресов временно недоступен. Попробуйте позже».
+3.	Вариант использования завершается.
+8Г.1.1А. Ограничение по типу услуги для VIP-опций
+1.	Система обнаруживает, что клиент пытается активировать VIP-опции для типа услуги «Эконом».
+2.	Система выдает сообщение об ошибке: «Музыка, фильмы и напитки доступны только для класса Бизнес».
+3.	Система блокирует премиальное меню и возвращает пользователя к шагу 5 основного потока.
+7А. Данные адреса не распознаны
+1.	Система обнаруживает, что введенный клиентом адрес отсутствует в справочниках геолокации.
+2.	Система выдает сообщение об ошибке: «Адрес не найден. Проверьте корректность ввода».
+3.	Выполнение переходит на шаг 5 основного потока.
+]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="exception" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2519-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="bbee07ad-37fa-4afd-a63a-c833465321a9"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Перед началом выполнения данного варианта использования клиент должен войти в систему (успешно выполнить прецедент «Авторизоваться в системе»).]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="precondition" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2515-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="e80c9976-0e18-4572-a174-5b16ff4994b4"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Если вариант использования завершится успешно, система создаст и зарегистрирует под уникальным номером новый заказ клиента с выбранными адресами, типом тарифа и дополнительными опциями. В противном случае гарантируется, что: при наличии другой активной поездки новый заказ не создается; при сбое картографического сервиса данные не сохраняются; VIP-опции не могут быть применены к эконом-классу.]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="postcondition" mc="Infrastructure.NoteType" uid="00bc0b8c-0000-2517-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Use Case View" version="4">
+  <OBJECT>
+    <ID name="Use Case View" mc="Standard.Package" uid="cb44e63d-479b-4618-8356-edc7cff62f84"/>
+    <PID name="lab2_taxi" mc="Standard.Package" uid="b7de0303-4501-4983-964f-e134cdb66efe"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Use Case View]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Клиент" mc="Standard.Actor" uid="260a9c69-8aa5-4cf1-80a5-5c0177c6406f"/>
+        <COMPID name="Водитель" mc="Standard.Actor" uid="1d067f7e-1d4d-41cd-840b-8cb5eae6f922"/>
+        <COMPID name="Админ" mc="Standard.Actor" uid="27a9d176-6810-4839-8ac2-876d75262c29"/>
+        <COMPID name="Авторизоваться в системе" mc="Standard.UseCase" uid="54208b25-ef19-4260-a55b-06a76d787824"/>
+        <COMPID name="Пользователь" mc="Standard.Actor" uid="613545de-6474-4a96-9a91-be4308d6c8a5"/>
+        <COMPID name="Оформить заказ" mc="Standard.UseCase" uid="0af9333c-e224-497d-87a5-b86fb32b2ae3"/>
+        <COMPID name="Отменить заказ" mc="Standard.UseCase" uid="9d3b2275-c617-4db2-bd8d-20ba99bd6e3f"/>
+        <COMPID name="Пожаловаться" mc="Standard.UseCase" uid="e25f0b88-9b1b-4273-a834-c9bf07cb5c3b"/>
+        <COMPID name="Принять заказ" mc="Standard.UseCase" uid="5dc09c40-6c69-4049-87cf-a12a60e38dc6"/>
+        <COMPID name="Отказаться от заказа" mc="Standard.UseCase" uid="80a9aa25-6ea0-4e0a-b435-48c7db2c9f30"/>
+        <COMPID name="Запросить статистику километража" mc="Standard.UseCase" uid="ac888e0d-8df2-4955-b419-7b0e027df739"/>
+        <COMPID name="Просмотреть статус автомобилей" mc="Standard.UseCase" uid="75bb66cc-baa2-4e9c-bf3d-c26158d016bf"/>
+        <COMPID name="Запросить рейтинг водителей по баллам" mc="Standard.UseCase" uid="adb496d2-284f-4306-bb65-78ba8378223d"/>
+        <COMPID name="Выбрать тип услуги" mc="Standard.UseCase" uid="9ac692cc-c428-462b-bcc8-4ff4969a14e2"/>
+        <COMPID name="Указать адрес подачи" mc="Standard.UseCase" uid="f3a6d465-af53-4a48-946f-fa84c4839e05"/>
+        <COMPID name="Выбрать доп. опции" mc="Standard.UseCase" uid="f5ba21b5-d2c8-4ce5-8c9a-ae80249cbbcd"/>
+        <COMPID name="Выбрать VIP-опции" mc="Standard.UseCase" uid="e99e0e74-c505-4646-97f8-1dc1777d230a"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Main" mc="Standard.UseCaseDiagram" uid="9ccfef82-ace8-4573-ad40-9e13228ac792"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
