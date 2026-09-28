@@ -2,7 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Activity View" version="4">
   <OBJECT>
     <ID name="Activity View" mc="Standard.Package" uid="1dd4df04-2366-4e0b-810a-be7bf65d370a"/>
-    <PID name="lab2_taxi" mc="Standard.Package" uid="b7de0303-4501-4983-964f-e134cdb66efe"/>
+    <PID name="Lab PT 02&amp;03-38 KD" mc="Standard.Package" uid="b7de0303-4501-4983-964f-e134cdb66efe"/>
     <ATTRIBUTES>
       <ATT name="IsInstantiable">false</ATT>
       <ATT name="IsAbstract">false</ATT>
@@ -12,6 +12,10 @@
       <ATT name="Name"><![CDATA[Activity View]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
-    <DEPENDENCIES></DEPENDENCIES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Activity" mc="Standard.Activity" uid="2a17a8b4-9787-4510-b763-bed607529124"/>
+      </COMP>
+    </DEPENDENCIES>
   </OBJECT>
 </EXT>
