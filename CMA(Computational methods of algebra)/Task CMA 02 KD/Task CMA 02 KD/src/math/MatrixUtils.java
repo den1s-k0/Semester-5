@@ -76,6 +76,18 @@ public class MatrixUtils {
                 MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
     }
 
+    public static void showNormsForTable(double[] mas1, double[] mas2) {
+        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
+        System.out.printf("%-20.8e%-20.8e%-20.8e%n", MatrixUtils.cubicNorm(err),
+                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
+    }
+
+    public static void showNormsForTable(String str, double[] mas1, double[] mas2) {
+        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
+        System.out.printf("%-15s%-20.8e%-20.8e%-20.8e%n", str, MatrixUtils.cubicNorm(err),
+                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
+    }
+
     public static void showMatrix(double[][] matrix) {
         for (double[] i : matrix) {
             for (double j : i ) {
