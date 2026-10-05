@@ -1,9 +1,45 @@
 package math;
 
 public class GaussianMethod {
-    private final static double eps = 1e-30;
 
-    public static double[] solve(double[][] matrix, double[] rhs) {
+    private static void forwardStroke(double[][] matrix, double[] rhs, int i, double eps) {
+        int size = matrix.length;
+        double aii = matrix[i][i];
+        if (Math.abs(aii) < eps) {
+            throw new ArithmeticException("Matrix is singular or nearly singular at column " + i);
+        }
+
+        for (int j = i; j < size; j++) {
+            matrix[i][j] /= aii;
+            if (Double.isInfinite(matrix[i][j]) || Double.isNaN(matrix[i][j])) {
+                throw new ArithmeticException("Division by zero");
+            }
+        }
+        rhs[i] /= aii;
+        if (Double.isInfinite(rhs[i]) || Double.isNaN(rhs[i])) {
+            throw new ArithmeticException("Division by zero");
+        }
+
+        for (int k = i + 1; k < size; k++) {
+            double aki = matrix[k][i];
+            for (int t = i; t < size; t++) {
+                matrix[k][t] -= (matrix[i][t] * aki);
+            }
+            rhs[k] -= (rhs[i] * aki);
+        }
+    }
+
+    private static void backStroke(double[][] matrix, double[] rhs, double eps) {
+        int size = matrix.length;
+        for (int i = size - 1; i >= 0; i--) {
+            for (int k = i - 1; k >= 0; k--) {
+                rhs[k] -= (rhs[i] * matrix[k][i]);
+                matrix[k][i] = 0;
+            }
+        }
+    }
+
+    public static double[] solve(double[][] matrix, double[] rhs, double eps) {
         validate(matrix, rhs);
 
         int size = matrix.length;
@@ -14,41 +50,14 @@ public class GaussianMethod {
         double[] x = rhs.clone();
 
         for (int i = 0; i < size; i++) {
-            double aii = a[i][i];
-//            if (aii < eps) {
-//                throw new ArithmeticException("Matrix is singular or nearly singular at column " + i);
-//            }
-
-            for (int j = i; j < size; j++) {
-                a[i][j] /= aii;
-                if (Double.isInfinite(a[i][j]) || Double.isNaN(a[i][j])) {
-                    throw new ArithmeticException("Division by zero");
-                }
-            }
-            x[i] /= aii;
-            if (Double.isInfinite(x[i]) || Double.isNaN(x[i])) {
-                throw new ArithmeticException("Division by zero");
-            }
-
-            for (int k = i + 1; k < size; k++) {
-                double aki = a[k][i];
-                for (int t = i; t < size; t++) {
-                    a[k][t] -= (a[i][t] * aki);
-                }
-                x[k] -= (x[i] * aki);
-            }
+            forwardStroke(a, x, i, eps);
         }
 
-        for (int i = size - 1; i >= 0; i--) {
-            for (int k = i - 1; k >= 0; k--) {
-                x[k] -= (x[i] * a[k][i]);
-                a[k][i] = 0;
-            }
-        }
+        backStroke(a, x, eps);
         return x;
     }
 
-    public static double[] columnSolve(double[][] matrix, double[] rhs) {
+    public static double[] columnSolve(double[][] matrix, double[] rhs, double eps) {
         validate(matrix, rhs);
 
         int size = matrix.length;
@@ -58,61 +67,34 @@ public class GaussianMethod {
         }
         double[] x = rhs.clone();
 
-        int pivotStr;
+        int pivotRow;
         double maxAbs;
 
         for (int i = 0; i < size; i++) {
-            pivotStr = i;
-            maxAbs = Math.abs(a[pivotStr][pivotStr]);
+            pivotRow = i;
+            maxAbs = Math.abs(a[pivotRow][pivotRow]);
 
             for(int c = i + 1; c < size; c++) {
                 if (Math.abs(a[c][i]) > maxAbs) {
-                    pivotStr = c;
+                    pivotRow = c;
                     maxAbs = Math.abs(a[c][i]);
                 }
             }
 
-//            if (maxAbs < eps) {
-//                throw new ArithmeticException("Matrix is singular or nearly singular at column " + i);
-//            }
-
-            if (pivotStr != i) {
+            if (pivotRow != i) {
                 double[] bufferStr = a[i].clone();
-                a[i] = a[pivotStr];
-                a[pivotStr] = bufferStr;
+                a[i] = a[pivotRow];
+                a[pivotRow] = bufferStr;
 
                 double bufferX = x[i];
-                x[i] = x[pivotStr];
-                x[pivotStr] = bufferX;
+                x[i] = x[pivotRow];
+                x[pivotRow] = bufferX;
             }
 
-            double aii = a[i][i];
-            for (int j = i; j < size; j++) {
-                a[i][j] /= aii;
-                if (Double.isInfinite(a[i][j]) || Double.isNaN(a[i][j])) {
-                    throw new ArithmeticException("Division by zero");
-                }
-            }
-            x[i] /= aii;
-            if (Double.isInfinite(x[i]) || Double.isNaN(x[i])) {
-                throw new ArithmeticException("Division by zero");
-            }
-
-            for (int k = i + 1; k < size; k++) {
-                double aki = a[k][i];
-                for (int t = i; t < size; t++) {
-                    a[k][t] -= (a[i][t] * aki);
-                }
-                x[k] -= (x[i] * aki);
-            }
+            forwardStroke(a, x, i, eps);
         }
 
-        for (int i = size - 1; i >= 0; i--) {
-            for (int k = i - 1; k >= 0; k--) {
-                x[k] -= (x[i] * a[k][i]);
-                a[k][i] = 0;
-            }
-        }
+        backStroke(a, x,eps);
         return x;
     }
 

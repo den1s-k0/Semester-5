@@ -12,6 +12,53 @@ public class MatrixUtils {
         return rsh;
     }
 
+    public static double[] vectorsDifference(double[] mas1, double[] mas2, double eps) {
+        if (mas1 == null || mas2 == null) {
+            throw new IllegalArgumentException("X or X* must not be null");
+        }
+
+        int n = mas1.length;
+        if (n == 0) {
+            throw new IllegalArgumentException("Matrix must not be empty");
+        }
+
+        if (mas2.length != n) {
+            throw new IllegalArgumentException("RSH and matrix sizes must be equal");
+        }
+
+        double[] err = new double[n];
+
+        for (int i = 0; i < n; i++) {
+            err[i] = mas1[i] - mas2[i];
+        }
+        return err;
+    }
+    public static double cubicNorm(double[] mas) {
+        double maxAbs = mas[0];
+        for (double ma : mas) {
+            if (maxAbs < Math.abs(ma)) {
+                maxAbs = Math.abs(ma);
+            }
+        }
+        return maxAbs;
+    }
+
+    public static double octahedralNorm(double[] mas) {
+        double sum = 0;
+        for (double ma : mas) {
+            sum += Math.abs(ma);
+        }
+        return sum;
+    }
+
+    public static double sphericalNorm(double[] mas) {
+        double sum = 0;
+        for (double ma : mas) {
+            sum += ma * ma;
+        }
+        return Math.sqrt(sum);
+    }
+
     public static void showMatrix(double[][] matrix) {
         for (double[] i : matrix) {
             for (double j : i ) {
