@@ -94,7 +94,72 @@ public class GaussianMethod {
             forwardStroke(a, x, i, eps);
         }
 
-        backStroke(a, x,eps);
+        backStroke(a, x, eps);
+        return x;
+    }
+
+    public static double[] rowSolve(double[][] matrix, double[] rhs, double eps) {
+        validate(matrix, rhs);
+
+        int size = matrix.length;
+        double[][] a = new double[size][size];
+        for (int i = 0; i < size; i++) {
+            a[i] = matrix[i].clone();
+        }
+        double[] x = rhs.clone();
+
+        int pivotColumn;
+        double maxAbs;
+        int[] perVec = new int[size];
+        for (int i = 0; i < size; i++) {
+            perVec[i] = i;
+        }
+
+        for (int i = 0; i < size; i++) {
+            pivotColumn = i;
+            maxAbs = Math.abs(a[pivotColumn][pivotColumn]);
+
+            for(int c = i + 1; c < size; c++) {
+                if (Math.abs(a[i][c]) > maxAbs) {
+                    pivotColumn = c;
+                    maxAbs = Math.abs(a[i][c]);
+                }
+            }
+
+            if (pivotColumn != i) {
+                double tempElem;
+                int tempInd;
+                for (int j = 0; j < size; j++) {
+                    tempElem = a[j][i];
+                    a[j][i] = a[j][pivotColumn];
+                    a[j][pivotColumn] = tempElem;
+                }
+                tempInd = perVec[i];
+                perVec[i] = perVec[pivotColumn];
+                perVec[pivotColumn] = tempInd;
+            }
+
+            forwardStroke(a, x, i, eps);
+        }
+
+        backStroke(a, x, eps);
+
+        double tempX;
+        int tempPer;
+        for (int i = 0; i < size; i++) {
+            if (perVec[i] != i) {
+                tempX = x[i];
+                x[i] = x[perVec[i]];
+                x[perVec[i]] = tempX;
+
+                tempPer = perVec[perVec[i]];
+                perVec[perVec[i]] = perVec[i];
+                perVec[i] = tempPer;
+                i--;
+                continue;
+            }
+        }
+
         return x;
     }
 

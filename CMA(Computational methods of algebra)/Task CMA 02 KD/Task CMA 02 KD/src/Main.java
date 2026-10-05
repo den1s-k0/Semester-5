@@ -24,9 +24,21 @@ public class Main {
         MatrixUtils.showComparing("Compare solve result: ", xAnswer, defaultResult, eps);
 
         double[] columnResult = GaussianMethod.columnSolve(matrix1, rhs, eps1);
-        MatrixUtils.showVector("Select by column solve result:", defaultResult);
+        MatrixUtils.showVector("Select by column solve result:", columnResult);
 
         MatrixUtils.showComparing("Compare column solve result: ", xAnswer, columnResult, eps);
+
+        double[] rowResult = GaussianMethod.rowSolve(matrix1, rhs, eps1);
+        MatrixUtils.showVector("Select by row solve result:", rowResult);
+
+        MatrixUtils.showComparing("Compare row solve result: ", xAnswer, rowResult, eps);
+
+        MatrixUtils.showNorms("Default solve: ", defaultResult, xAnswer);
+
+        MatrixUtils.showNorms("Column solve: ", columnResult, xAnswer);
+
+        MatrixUtils.showNorms("Row solve: ", rowResult, xAnswer);
+
     }
 
     public static void main(String[] args) {

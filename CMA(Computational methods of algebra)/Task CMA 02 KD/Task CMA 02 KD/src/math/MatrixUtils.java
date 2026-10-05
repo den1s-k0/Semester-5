@@ -12,7 +12,7 @@ public class MatrixUtils {
         return rsh;
     }
 
-    public static double[] vectorsDifference(double[] mas1, double[] mas2, double eps) {
+    public static double[] vectorsDifference(double[] mas1, double[] mas2) {
         if (mas1 == null || mas2 == null) {
             throw new IllegalArgumentException("X or X* must not be null");
         }
@@ -57,6 +57,23 @@ public class MatrixUtils {
             sum += ma * ma;
         }
         return Math.sqrt(sum);
+    }
+
+    public static void showNorms(double[] mas1, double[] mas2) {
+        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
+        System.out.printf("%-20s%-20s%-20s%n", "Cubic Norm",
+                "Octahedral Norm", "Spherical Norm");
+        System.out.printf("%-20.8e%-20.8e%-20.8e%n", MatrixUtils.cubicNorm(err),
+                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
+    }
+
+    public static void showNorms(String str, double[] mas1, double[] mas2) {
+        System.out.printf("%-35s%n", str);
+        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
+        System.out.printf("%-20s%-20s%-20s%n", "Cubic Norm",
+                "Octahedral Norm", "Spherical Norm");
+        System.out.printf("%-20.8e%-20.8e%-20.8e%n%n", MatrixUtils.cubicNorm(err),
+                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
     }
 
     public static void showMatrix(double[][] matrix) {
