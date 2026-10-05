@@ -34,24 +34,24 @@ public class HilbertMatrix {
 
     public static void completeTask() {
         final double eps = 1e-10;
-        double[] answer = ConsoleIO.enterTask();
-        HilbertMatrix hilbertMatrix = new HilbertMatrix(answer.length);
+        double[] xAnswer = ConsoleIO.enterX();
+        HilbertMatrix hilbertMatrix = new HilbertMatrix(xAnswer.length);
         double[][] matrix1 = hilbertMatrix.getMatrix();
 
         System.out.println("Hilbert matrix: ");
         MatrixUtils.showMatrix(matrix1);
 
-        MatrixUtils.showResult("Task result:", answer);
+        MatrixUtils.showVector("Task result:", xAnswer);
 
-        double[] rsh = GaussianMethod.aX(matrix1, answer);
-        double[] result = GaussianMethod.solve(matrix1, rsh);
-        MatrixUtils.showResult("My solve result:", result);
+        double[] rsh = MatrixUtils.matrixVectorMultiply(matrix1, xAnswer);
+        double[] defaultResult = GaussianMethod.solve(matrix1, rsh);
+        MatrixUtils.showVector("My default solve result:", defaultResult);
 
-        MatrixUtils.showComparing("Compare solve result: ", answer, result, eps);
+        MatrixUtils.showComparing("Compare solve result: ", xAnswer, defaultResult, eps);
 
-        double[] pivotResult = GaussianMethod.pivotSolve(matrix1, rsh);
-        MatrixUtils.showResult("My pivot solve result:", result);
+        double[] columnResult = GaussianMethod.columnSolve(matrix1, rsh);
+        MatrixUtils.showVector("Select by column solve result:", defaultResult);
 
-        MatrixUtils.showComparing("Compare pivot solve result: ", answer, pivotResult, eps);
+        MatrixUtils.showComparing("Compare column solve result: ", xAnswer, columnResult, eps);
     }
 }

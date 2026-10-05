@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleIO {
-    public static double[] enterTask(){
+    public static double[] enterX(){
         Scanner in = new Scanner(System.in);
         int size;
         while (true) {
@@ -14,18 +14,18 @@ public class ConsoleIO {
                 if (size > 0) {
                     break;
                 }
-                System.out.println("Size must be >0");
+                System.out.println("Size must be > 0");
             } catch (InputMismatchException e) {
                 System.out.println("Size must be a number");
                 in.nextLine();
             }
         }
-        System.out.print("Enter " + size + " answers: ");
-        double[] answer = new double[size];
+        System.out.print("Enter " + size + " x: ");
+        double[] x = new double[size];
         for(int i = 0; i < size; i++) {
             while (true) {
                 try {
-                    answer[i] = in.nextDouble();
+                    x[i] = in.nextDouble();
                     break;
                 } catch (InputMismatchException e) {
                     System.out.println("Value must be a number");
@@ -33,6 +33,6 @@ public class ConsoleIO {
                 }
             }
         }
-        return answer;
+        return x;
     }
 }

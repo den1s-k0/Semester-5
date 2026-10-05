@@ -1,18 +1,7 @@
 package math;
 
 public class GaussianMethod {
-    private final static double eps = 1e-15;
-
-    public static double[] aX(double[][] matrix, double[] x) {
-        int size = matrix.length;
-        double[] rsh = new double[size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                rsh[i] += matrix[i][j] * x[j];
-            }
-        }
-        return rsh;
-    }
+    private final static double eps = 1e-30;
 
     public static double[] solve(double[][] matrix, double[] rhs) {
         validate(matrix, rhs);
@@ -26,9 +15,9 @@ public class GaussianMethod {
 
         for (int i = 0; i < size; i++) {
             double aii = a[i][i];
-            if (aii < eps) {
-                throw new ArithmeticException("Matrix is singular or nearly singular at column " + i);
-            }
+//            if (aii < eps) {
+//                throw new ArithmeticException("Matrix is singular or nearly singular at column " + i);
+//            }
 
             for (int j = i; j < size; j++) {
                 a[i][j] /= aii;
@@ -59,7 +48,7 @@ public class GaussianMethod {
         return x;
     }
 
-    public static double[] pivotSolve(double[][] matrix, double[] rhs) {
+    public static double[] columnSolve(double[][] matrix, double[] rhs) {
         validate(matrix, rhs);
 
         int size = matrix.length;
@@ -83,9 +72,9 @@ public class GaussianMethod {
                 }
             }
 
-            if (maxAbs < eps) {
-                throw new ArithmeticException("Matrix is singular or nearly singular at column " + i);
-            }
+//            if (maxAbs < eps) {
+//                throw new ArithmeticException("Matrix is singular or nearly singular at column " + i);
+//            }
 
             if (pivotStr != i) {
                 double[] bufferStr = a[i].clone();
