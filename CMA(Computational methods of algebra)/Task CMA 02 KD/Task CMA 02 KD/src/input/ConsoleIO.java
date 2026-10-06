@@ -35,4 +35,23 @@ public class ConsoleIO {
         }
         return x;
     }
+
+    public static int enterSize(){
+        Scanner in = new Scanner(System.in);
+        int size;
+        while (true) {
+            System.out.print("Enter matrix size: ");
+            try {
+                size = in.nextInt();
+                if (size > 0) {
+                    break;
+                }
+                System.out.println("Size must be > 0");
+            } catch (InputMismatchException e) {
+                System.out.println("Size must be a number");
+                in.nextLine();
+            }
+        }
+        return size;
+    }
 }

@@ -1,4 +1,5 @@
 import input.ConsoleIO;
+import math.DiagonallyDominationMatrix;
 import math.GaussianMethod;
 import math.HilbertMatrix;
 import math.MatrixUtils;
@@ -43,7 +44,7 @@ public class Main {
 
     }
 
-    public static void completeTask2() {
+    public static void completeTask34() {
         int[] nVec = {3, 7, 11, 15, 19};
         for (int i : nVec) {
             System.out.println(i);
@@ -73,7 +74,14 @@ public class Main {
         MatrixUtils.showNormsForTable("Row solve: ", rowResult, xAnswer);
     }
 
+    public static void completeTask5() {
+        DiagonallyDominationMatrix diagonallyDominationMatrix = new DiagonallyDominationMatrix(ConsoleIO.enterSize());
+        double[][] matrix = diagonallyDominationMatrix.getMatrix();
+
+        MatrixUtils.showMatrix02F(matrix);
+    }
+
     public static void main(String[] args) {
-        completeTask2();
+        completeTask5();
     }
 }

@@ -98,6 +98,16 @@ public class MatrixUtils {
         System.out.println();
     }
 
+    public static void showMatrix02F(double[][] matrix) {
+        for (double[] i : matrix) {
+            for (double j : i ) {
+                System.out.printf("%-10.2f", j);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
     public static void showVector(double[] vector) {
         for (double i : vector) {
             System.out.printf("%-20.8e", i);
