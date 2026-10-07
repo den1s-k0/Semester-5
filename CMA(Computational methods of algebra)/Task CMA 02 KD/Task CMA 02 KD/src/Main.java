@@ -1,8 +1,9 @@
 import input.ConsoleIO;
-import math.DiagonallyDominationMatrix;
+import math.VectorUtils;
+import math.matrix.DiagonallyDominationMatrix;
 import math.GaussianMethod;
-import math.HilbertMatrix;
-import math.MatrixUtils;
+import math.matrix.HilbertMatrix;
+import math.matrix.MatrixUtils;
 
 import java.util.Arrays;
 
@@ -18,29 +19,29 @@ public class Main {
         System.out.println("Hilbert matrix: ");
         MatrixUtils.showMatrix(matrix1);
 
-        MatrixUtils.showVector("Task result:", xAnswer);
+        VectorUtils.showVector("Task result:", xAnswer);
 
         double[] rhs = MatrixUtils.matrixVectorMultiply(matrix1, xAnswer);
         double[] defaultResult = GaussianMethod.solve(matrix1, rhs, eps1);
-        MatrixUtils.showVector("My default solve result:", defaultResult);
+        VectorUtils.showVector("My default solve result:", defaultResult);
 
-        MatrixUtils.showComparing("Compare solve result: ", xAnswer, defaultResult, eps);
+        VectorUtils.showComparing("Compare solve result: ", xAnswer, defaultResult, eps);
 
         double[] columnResult = GaussianMethod.columnSolve(matrix1, rhs, eps1);
-        MatrixUtils.showVector("Select by column solve result:", columnResult);
+        VectorUtils.showVector("Select by column solve result:", columnResult);
 
-        MatrixUtils.showComparing("Compare column solve result: ", xAnswer, columnResult, eps);
+        VectorUtils.showComparing("Compare column solve result: ", xAnswer, columnResult, eps);
 
         double[] rowResult = GaussianMethod.rowSolve(matrix1, rhs, eps1);
-        MatrixUtils.showVector("Select by row solve result:", rowResult);
+        VectorUtils.showVector("Select by row solve result:", rowResult);
 
-        MatrixUtils.showComparing("Compare row solve result: ", xAnswer, rowResult, eps);
+        VectorUtils.showComparing("Compare row solve result: ", xAnswer, rowResult, eps);
 
-        MatrixUtils.showNorms("Default solve: ", defaultResult, xAnswer);
+        VectorUtils.showNorms("Default solve: ", defaultResult, xAnswer);
 
-        MatrixUtils.showNorms("Column solve: ", columnResult, xAnswer);
+        VectorUtils.showNorms("Column solve: ", columnResult, xAnswer);
 
-        MatrixUtils.showNorms("Row solve: ", rowResult, xAnswer);
+        VectorUtils.showNorms("Row solve: ", rowResult, xAnswer);
 
     }
 
@@ -67,11 +68,11 @@ public class Main {
         double[] columnResult = GaussianMethod.columnSolve(matrix1, rhs, eps1);
         double[] rowResult = GaussianMethod.rowSolve(matrix1, rhs, eps1);
 
-        MatrixUtils.showNormsForTable("Default solve: ", defaultResult, xAnswer);
+        VectorUtils.showNormsForTable("Default solve: ", defaultResult, xAnswer);
 
-        MatrixUtils.showNormsForTable("Column solve: ", columnResult, xAnswer);
+        VectorUtils.showNormsForTable("Column solve: ", columnResult, xAnswer);
 
-        MatrixUtils.showNormsForTable("Row solve: ", rowResult, xAnswer);
+        VectorUtils.showNormsForTable("Row solve: ", rowResult, xAnswer);
     }
 
     public static void completeTask5() {
@@ -81,7 +82,22 @@ public class Main {
         MatrixUtils.showMatrix02F(matrix);
     }
 
+    public static void completeTask6() {
+        final double eps = 1e-15;
+        double[][] matrix = ConsoleIO.enterMatrix();
+
+        double cubicCond = MatrixUtils.cubicNorm(matrix)
+                * MatrixUtils.cubicNorm(MatrixUtils.inverseMatrix(matrix, eps));
+
+        System.out.printf("Condition number in cubic norm: %-20.3f%n", cubicCond);
+
+        double octahedralCond = MatrixUtils.octahedralNorm(matrix)
+                * MatrixUtils.octahedralNorm(MatrixUtils.inverseMatrix(matrix, eps));
+
+        System.out.printf("Condition number in octahedral norm: %-20.3f%n", octahedralCond);
+    }
+
     public static void main(String[] args) {
-        completeTask5();
+        completeTask6();
     }
 }

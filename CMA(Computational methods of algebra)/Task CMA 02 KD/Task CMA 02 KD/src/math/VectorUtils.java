@@ -1,17 +1,6 @@
 package math;
 
-public class MatrixUtils {
-    public static double[] matrixVectorMultiply(double[][] matrix, double[] x) {
-        int size = matrix.length;
-        double[] rsh = new double[size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                rsh[i] += matrix[i][j] * x[j];
-            }
-        }
-        return rsh;
-    }
-
+public class VectorUtils {
     public static double[] vectorsDifference(double[] mas1, double[] mas2) {
         if (mas1 == null || mas2 == null) {
             throw new IllegalArgumentException("X or X* must not be null");
@@ -33,6 +22,7 @@ public class MatrixUtils {
         }
         return err;
     }
+
     public static double cubicNorm(double[] mas) {
         double maxAbs = mas[0];
         for (double ma : mas) {
@@ -60,52 +50,32 @@ public class MatrixUtils {
     }
 
     public static void showNorms(double[] mas1, double[] mas2) {
-        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
+        double[] err = vectorsDifference(mas1, mas2);
         System.out.printf("%-20s%-20s%-20s%n", "Cubic Norm",
                 "Octahedral Norm", "Spherical Norm");
-        System.out.printf("%-20.8e%-20.8e%-20.8e%n", MatrixUtils.cubicNorm(err),
-                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
+        System.out.printf("%-20.8e%-20.8e%-20.8e%n", cubicNorm(err),
+                octahedralNorm(err), sphericalNorm(err));
     }
 
     public static void showNorms(String str, double[] mas1, double[] mas2) {
         System.out.printf("%-35s%n", str);
-        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
+        double[] err = vectorsDifference(mas1, mas2);
         System.out.printf("%-20s%-20s%-20s%n", "Cubic Norm",
                 "Octahedral Norm", "Spherical Norm");
-        System.out.printf("%-20.8e%-20.8e%-20.8e%n%n", MatrixUtils.cubicNorm(err),
-                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
+        System.out.printf("%-20.8e%-20.8e%-20.8e%n%n", cubicNorm(err),
+                octahedralNorm(err), sphericalNorm(err));
     }
 
     public static void showNormsForTable(double[] mas1, double[] mas2) {
-        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
-        System.out.printf("%-20.8e%-20.8e%-20.8e%n", MatrixUtils.cubicNorm(err),
-                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
+        double[] err = vectorsDifference(mas1, mas2);
+        System.out.printf("%-20.8e%-20.8e%-20.8e%n", cubicNorm(err),
+                octahedralNorm(err), sphericalNorm(err));
     }
 
     public static void showNormsForTable(String str, double[] mas1, double[] mas2) {
-        double[] err = MatrixUtils.vectorsDifference(mas1, mas2);
-        System.out.printf("%-15s%-20.8e%-20.8e%-20.8e%n", str, MatrixUtils.cubicNorm(err),
-                MatrixUtils.octahedralNorm(err), MatrixUtils.sphericalNorm(err));
-    }
-
-    public static void showMatrix(double[][] matrix) {
-        for (double[] i : matrix) {
-            for (double j : i ) {
-                System.out.printf("%-20.6e", j);
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-
-    public static void showMatrix02F(double[][] matrix) {
-        for (double[] i : matrix) {
-            for (double j : i ) {
-                System.out.printf("%-10.2f", j);
-            }
-            System.out.println();
-        }
-        System.out.println();
+        double[] err = vectorsDifference(mas1, mas2);
+        System.out.printf("%-15s%-20.8e%-20.8e%-20.8e%n", str, cubicNorm(err),
+                octahedralNorm(err), sphericalNorm(err));
     }
 
     public static void showVector(double[] vector) {
@@ -138,4 +108,3 @@ public class MatrixUtils {
         System.out.println("\n");
     }
 }
-

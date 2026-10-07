@@ -54,4 +54,38 @@ public class ConsoleIO {
         }
         return size;
     }
+
+    public static double[][] enterMatrix() {
+        Scanner in = new Scanner(System.in);
+        int size;
+        while (true) {
+            System.out.print("Enter matrix size: ");
+            try {
+                size = in.nextInt();
+                if (size > 0) {
+                    break;
+                }
+                System.out.println("Size must be > 0");
+            } catch (InputMismatchException e) {
+                System.out.println("Size must be a number");
+                in.nextLine();
+            }
+        }
+        double[][] matrix = new double[size][size];
+        for (int i = 0; i < size; i++) {
+            System.out.print("Enter " + size + " elements of " + i + " row: ");
+            for (int j = 0; j < size; j++) {
+                while (true) {
+                    try {
+                        matrix[i][j] = in.nextDouble();
+                        break;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Value must be a number");
+                        in.nextLine();
+                    }
+                }
+            }
+        }
+        return matrix;
+    }
 }

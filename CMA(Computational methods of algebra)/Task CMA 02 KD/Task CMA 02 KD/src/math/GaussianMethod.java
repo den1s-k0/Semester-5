@@ -29,7 +29,7 @@ public class GaussianMethod {
         }
     }
 
-    private static void backStroke(double[][] matrix, double[] rhs, double eps) {
+    private static void backStroke(double[][] matrix, double[] rhs) {
         int size = matrix.length;
         for (int i = size - 1; i >= 0; i--) {
             for (int k = i - 1; k >= 0; k--) {
@@ -53,7 +53,7 @@ public class GaussianMethod {
             forwardStroke(a, x, i, eps);
         }
 
-        backStroke(a, x, eps);
+        backStroke(a, x);
         return x;
     }
 
@@ -94,7 +94,7 @@ public class GaussianMethod {
             forwardStroke(a, x, i, eps);
         }
 
-        backStroke(a, x, eps);
+        backStroke(a, x);
         return x;
     }
 
@@ -142,7 +142,7 @@ public class GaussianMethod {
             forwardStroke(a, x, i, eps);
         }
 
-        backStroke(a, x, eps);
+        backStroke(a, x);
 
         double tempX;
         int tempPer;
@@ -156,7 +156,6 @@ public class GaussianMethod {
                 perVec[perVec[i]] = perVec[i];
                 perVec[i] = tempPer;
                 i--;
-                continue;
             }
         }
 
