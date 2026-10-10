@@ -24,7 +24,7 @@ public class VectorUtils {
     }
 
     public static double cubicNorm(double[] mas) {
-        double maxAbs = mas[0];
+        double maxAbs = Math.abs(mas[0]);
         for (double ma : mas) {
             if (maxAbs < Math.abs(ma)) {
                 maxAbs = Math.abs(ma);

@@ -86,18 +86,41 @@ public class Main {
         final double eps = 1e-15;
         double[][] matrix = ConsoleIO.enterMatrix();
 
-        double cubicCond = MatrixUtils.cubicNorm(matrix)
-                * MatrixUtils.cubicNorm(MatrixUtils.inverseMatrix(matrix, eps));
+        double cubicCond = MatrixUtils.cubicCond(matrix, eps);
 
         System.out.printf("Condition number in cubic norm: %-20.3f%n", cubicCond);
 
-        double octahedralCond = MatrixUtils.octahedralNorm(matrix)
-                * MatrixUtils.octahedralNorm(MatrixUtils.inverseMatrix(matrix, eps));
+        double octahedralCond = MatrixUtils.octahedralCond(matrix, eps);
 
         System.out.printf("Condition number in octahedral norm: %-20.3f%n", octahedralCond);
+
+        double sphericalCond = MatrixUtils.sphericalCond(matrix, eps);
+
+        System.out.printf("Condition number in spherical norm: %-20.3f%n", sphericalCond);
     }
 
     public static void main(String[] args) {
-        completeTask6();
+        int n = -1;
+        while (n != 0) {
+            switch(n = ConsoleIO.enterNum()) {
+                case 0:
+                    break;
+                case 1:
+                    completeTask1();
+                    break;
+                case 2:
+                    completeTask34();
+                    break;
+                case 3:
+                    completeTask5();
+                    break;
+                case 4:
+                    completeTask6();
+                    break;
+                default:
+                    System.out.println("Enter different number");
+                    break;
+            }
+        }
     }
 }

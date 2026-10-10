@@ -91,6 +91,16 @@ public class MatrixUtils {
         backStroke(a, invA);
         return invA;
     }
+
+    public static double[][] transposeMatrix(double[][] matrix) {
+        double[][] transposeMatrix = new double[matrix[0].length][matrix.length];
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                transposeMatrix[i][j] = matrix[j][i];
+            }
+        }
+        return transposeMatrix;
+    }
     public static double[] matrixVectorMultiply(double[][] matrix, double[] x) {
         int size = matrix.length;
         double[] rsh = new double[size];
@@ -128,6 +138,31 @@ public class MatrixUtils {
             }
         }
         return maxSumAbs;
+    }
+
+    public static double sphericalNorm(double[][] matrix) {
+        double sumAbs = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                sumAbs += matrix[i][j] * matrix[i][j];
+            }
+        }
+        return Math.sqrt(sumAbs);
+    }
+
+    public static double cubicCond(double[][] matrix, double eps) {
+        return MatrixUtils.cubicNorm(matrix)
+                * MatrixUtils.cubicNorm(MatrixUtils.inverseMatrix(matrix, eps));
+    }
+
+    public static double octahedralCond(double[][] matrix, double eps) {
+        return MatrixUtils.octahedralNorm(matrix)
+                * MatrixUtils.octahedralNorm(MatrixUtils.inverseMatrix(matrix, eps));
+    }
+
+    public static double sphericalCond(double[][] matrix, double eps) {
+        return MatrixUtils.sphericalNorm(matrix)
+                * MatrixUtils.sphericalNorm(MatrixUtils.inverseMatrix(matrix, eps));
     }
 
     public static void showMatrix(double[][] matrix) {
