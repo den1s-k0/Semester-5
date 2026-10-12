@@ -164,7 +164,7 @@ public class GaussianMethod {
 
     private static void validate(double[][] matrix, double[] rhs) {
         if (matrix == null || rhs == null) {
-            throw new IllegalArgumentException("RSH or/and matrix must not be null");
+            throw new IllegalArgumentException("RHS or/and matrix must not be null");
         }
 
         int n = matrix.length;
@@ -173,7 +173,7 @@ public class GaussianMethod {
         }
 
         if (rhs.length != n) {
-            throw new IllegalArgumentException("RSH and matrix sizes must be equal");
+            throw new IllegalArgumentException("RHS and matrix sizes must be equal");
         }
 
         for (double[] doubles : matrix) {
