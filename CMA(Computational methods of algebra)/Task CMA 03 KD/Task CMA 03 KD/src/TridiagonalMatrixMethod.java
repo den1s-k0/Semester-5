@@ -10,6 +10,7 @@ public class TridiagonalMatrixMethod {
         for (int i = 0; i < size; i++) {
             a[i] = matrix[i].clone();
         }
+
         double[] x = new double[size];
         double[] aMas = new double[size + 1];
         double[] bMas = new double[size + 1];

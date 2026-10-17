@@ -33,4 +33,14 @@ public class TridiagonalMatrix {
     public int getSize() {
         return size;
     }
+
+    public void showMatrix02F() {
+        for (double[] i : matrix) {
+            for (double j : i ) {
+                System.out.printf("%-10.2f", j);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }
