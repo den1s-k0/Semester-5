@@ -9,10 +9,10 @@ public class ConsoleIO {
             System.out.print("Enter Number: ");
             try {
                 n = in.nextInt();
-                if (n > 0) {
+                if (n > 2) {
                     break;
                 }
-                System.out.println("Number must be > 0");
+                System.out.println("Number must be > 3");
             } catch (InputMismatchException e) {
                 System.out.println("It must be a number");
                 in.nextLine();
