@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Controller" version="4">
+  <OBJECT>
+    <ID name="Controller" mc="Standard.Package" uid="aff03dc7-2f76-4f42-9445-1f2ea1e893f2"/>
+    <PID name="Class View" mc="Standard.Package" uid="bfdd7353-0b1d-4bb3-a22b-cba69e0d9c75"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Controller]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="OrderManager" mc="Standard.Class" uid="daff8dbc-021b-4bce-9e60-19caccfb7c28"/>
+        <COMPID name="AuthorizationModule" mc="Standard.Class" uid="3d223516-9bfc-4f06-98c8-cbbb8e8dc5a2"/>
+        <COMPID name="StatisticsModule" mc="Standard.Class" uid="84f41696-716a-47c7-9c50-27a14f67a34b"/>
+        <COMPID name="IPayment" mc="Standard.Interface" uid="13925e30-b95d-4172-8712-90a4afaaa46e"/>
+        <COMPID name="PaymentByCard" mc="Standard.Class" uid="00c2545e-0c31-494d-aa46-def8badadd78"/>
+        <COMPID name="PaymentByCash" mc="Standard.Class" uid="03128aa5-5a0d-4356-9cf3-5c32e89bf0b6"/>
+        <COMPID name="List&lt;Driver&gt;" mc="Standard.DataType" uid="f71f55fa-1fd9-468d-b216-3e8aae4927dd"/>
+        <COMPID name="List&lt;Car&gt;" mc="Standard.DataType" uid="b61b45c1-e3dc-428d-9ebd-07b2750496de"/>
+      </COMP>
+      <COMP relation="DependsOnDependency">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Dependency" uid="a60ae0cb-d143-4f7c-8526-68e6cab4a369"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="DependsOn">
+              <ID name="Model" mc="Standard.Package" uid="08948d61-cb18-4f48-9aae-3cba4eb20419"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="a1ed332d-c24e-49c9-88d8-d5f630d229bf"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Пакет Controller. Содержит управляющие классы и интерфейс оплаты. Связывает View и Model.]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

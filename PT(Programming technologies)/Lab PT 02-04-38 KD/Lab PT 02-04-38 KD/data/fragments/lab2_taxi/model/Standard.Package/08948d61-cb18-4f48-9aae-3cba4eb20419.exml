@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Model" version="4">
+  <OBJECT>
+    <ID name="Model" mc="Standard.Package" uid="08948d61-cb18-4f48-9aae-3cba4eb20419"/>
+    <PID name="Class View" mc="Standard.Package" uid="bfdd7353-0b1d-4bb3-a22b-cba69e0d9c75"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Model]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="User" mc="Standard.Class" uid="63fffb75-5ed9-4f34-8ec7-2e9e0f62e82e"/>
+        <COMPID name="Client" mc="Standard.Class" uid="b61e8c80-d2d2-4897-8cc3-79743e3f22ab"/>
+        <COMPID name="Order" mc="Standard.Class" uid="1deeb90f-137a-4c34-bf53-a49b3d0cd232"/>
+        <COMPID name="Driver" mc="Standard.Class" uid="5e53b6c6-bee5-40b1-901a-828a891b4991"/>
+        <COMPID name="Admin" mc="Standard.Class" uid="c004226d-e631-4183-8d00-23ed08e4ec51"/>
+        <COMPID name="Car" mc="Standard.Class" uid="c55a4f0e-3bdd-4fa2-9aa9-ff88f076a2e9"/>
+        <COMPID name="DateTime" mc="Standard.DataType" uid="18b42e74-736c-4915-a13e-df66f820792d"/>
+        <OBJECT>
+          <ID name="optionsEnum" mc="Standard.Enumeration" uid="c79ac2d5-3728-40f3-b956-923674e94fe9"/>
+          <ATTRIBUTES>
+            <ATT name="IsElementary">true</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[optionsEnum]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <COMPID name="AdditionalOptions" mc="Standard.Class" uid="802c363f-e26a-4d7e-8eef-2e8518e0a4e8"/>
+        <COMPID name="Complaint" mc="Standard.Class" uid="a2c3ded2-8bee-48a1-b014-061dad9fd969"/>
+        <COMPID name="Trip" mc="Standard.Class" uid="3be762c4-da74-4791-8249-10b6841431d5"/>
+        <COMPID name="VipOptions" mc="Standard.Class" uid="23c5ee1c-feac-45fd-b32b-8cd11eb8a0a0"/>
+      </COMP>
+      <COMP relation="Descriptor">
+        <OBJECT>
+          <ID name="" mc="Infrastructure.Note" uid="e193d57a-118b-432e-950a-05770165daaa"/>
+          <ATTRIBUTES>
+            <ATT name="Content"><![CDATA[Пакет Model. Содержит классы-сущности: Пользователь, Клиент, Водитель, Администратор, Заказ, Автомобиль, ДопОпции, Поездка, Жалоба. Отвечает за хранение данных и правил.<Enter note text here>]]></ATT>
+            <ATT name="MimeType"><![CDATA[text/plain]]></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Model">
+              <FOREIGNID name="description" mc="Infrastructure.NoteType" uid="00000000-0000-3e81-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

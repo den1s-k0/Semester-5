@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Class View" version="4">
+  <OBJECT>
+    <ID name="Class View" mc="Standard.Package" uid="bfdd7353-0b1d-4bb3-a22b-cba69e0d9c75"/>
+    <PID name="Lab PT 02&amp;03&amp;04-38 KD" mc="Standard.Package" uid="b7de0303-4501-4983-964f-e134cdb66efe"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Class View]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Model" mc="Standard.Package" uid="08948d61-cb18-4f48-9aae-3cba4eb20419"/>
+        <COMPID name="View" mc="Standard.Package" uid="7e68f199-2874-4b04-bd8c-6a84cf48824b"/>
+        <COMPID name="Controller" mc="Standard.Package" uid="aff03dc7-2f76-4f42-9445-1f2ea1e893f2"/>
+        <COMPID name="Objects" mc="Standard.Package" uid="afe53791-50fe-41eb-b8ae-27ce4e6789e2"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Class View Class diagram" mc="Standard.ClassDiagram" uid="38827cae-1003-4718-90ca-dc5d43402411"/>
+        <COMPID name="Package diagram" mc="Standard.ClassDiagram" uid="4f8ff992-00da-4aac-860e-46bbaa6ade04"/>
+        <COMPID name="Class View Object diagram" mc="Standard.ObjectDiagram" uid="41a5e634-4d37-487f-b37e-6ef85565e116"/>
+        <COMPID name="Class View Class diagram general" mc="Standard.ClassDiagram" uid="fd06d649-3fd2-4856-a8d7-1e83e587d279"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
