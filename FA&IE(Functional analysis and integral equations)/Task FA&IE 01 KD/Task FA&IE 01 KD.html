@@ -7816,7 +7816,6 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">numpy.polynomial</span><span class="w"> </span><span class="kn">import</span> <span class="n">legendre</span> <span class="k">as</span> <span class="n">L</span><span class="p">,</span> <span class="n">chebyshev</span> <span class="k">as</span> <span class="n">C</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">quad</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -7898,6 +7897,16 @@ a.anchor-link {
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">x1</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span> <span class="s1">'k-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'x(t)=2|t|-t'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">S1</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span> <span class="s1">'r--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">'S_</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Задание 1.6'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Первые 12 коэффициентов C_k (Лежандр):"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">Ck</span><span class="p">))):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  C_</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">Ck</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s2"> .6e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Норма ||x||^2 = </span><span class="si">{</span><span class="n">norm2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Сумма вкладов sum 2/(2k+1)*C_k^2 = </span><span class="si">{</span><span class="n">norm2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">err2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Остаток (квадрат ошибки) = </span><span class="si">{</span><span class="n">err2</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Проверка: ||x||^2 - sum = </span><span class="si">{</span><span class="n">norm2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">norm2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">err2</span><span class="p">)</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -7915,6 +7924,25 @@ a.anchor-link {
 n = 554, eps_n = 9.952e-05
 число коэффициентов: 555
 ненулевых коэффициентов: 279
+
+Первые 12 коэффициентов C_k (Лежандр):
+  C_ 0 =  1.000000e+00
+  C_ 1 = -1.000000e+00
+  C_ 2 =  1.250000e+00
+  C_ 3 =  3.330669e-16
+  C_ 4 = -3.750000e-01
+  C_ 5 =  1.249001e-16
+  C_ 6 =  2.031250e-01
+  C_ 7 = -2.914335e-16
+  C_ 8 = -1.328125e-01
+  C_ 9 = -3.573530e-16
+  C_10 =  9.570313e-02
+  C_11 = -1.526557e-16
+
+Норма ||x||^2 = 3.333333
+Сумма вкладов sum 2/(2k+1)*C_k^2 = 3.333333
+Остаток (квадрат ошибки) = 9.903702e-09
+Проверка: ||x||^2 - sum = 9.903702e-09
 </pre>
 </div>
 </div>
@@ -7989,6 +8017,11 @@ n = 554, eps_n = 9.952e-05
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">x2</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span> <span class="s1">'k-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'x(t)=t sin^2(t/2)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">S2</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span> <span class="s1">'r--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'S_5 по Чебышеву'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Задание 2.6: Чебышев I рода'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Коэффициенты Чебышева C_0..C_5:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Ck_cheb</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  C_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2"> .6e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8003,6 +8036,13 @@ n = 554, eps_n = 9.952e-05
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Среднеквадратичная погрешность (с весом): 7.260e-06
+Коэффициенты Чебышева C_0..C_5:
+  C_0 =  8.881784e-18
+  C_1 =  1.748529e-01
+  C_2 =  3.552714e-17
+  C_3 =  5.621342e-02
+  C_4 =  3.441691e-17
+  C_5 = -1.227850e-03
 </pre>
 </div>
 </div>
@@ -8046,8 +8086,7 @@ n = 554, eps_n = 9.952e-05
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">'t'</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">eps3</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">eps3</span> <span class="o">=</span> <span class="mf">1e-2</span>
 
 <span class="n">a0</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span>
 
@@ -8078,6 +8117,14 @@ n = 554, eps_n = 9.952e-05
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">p_vis</span><span class="p">,</span> <span class="s1">'r--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">'S_</span><span class="si">{</span><span class="n">n_vis</span><span class="si">}</span><span class="s1">(t)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Задание 3 (3.6): частичная сумма, n=</span><span class="si">{</span><span class="n">n_vis</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Первые 10 коэффициентов тригонометрического ряда:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  a_0/2 = </span><span class="si">{</span><span class="n">a0</span><span class="o">/</span><span class="mi">2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">ak</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">k</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">bk</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">k</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  k=</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">:  a_k = </span><span class="si">{</span><span class="n">ak</span><span class="si">:</span><span class="s2"> .6e</span><span class="si">}</span><span class="s2">,  b_k = </span><span class="si">{</span><span class="n">bk</span><span class="si">:</span><span class="s2"> .6e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8098,6 +8145,19 @@ d_n      = 1.0000e-02
 
 Формула тригонометрического многочлена:
 p_n(t) = -3.289868 + Σ_{k=1}^{502655} [ 4(-1)^(k+1)/k² · cos(kt) + 4(-1)^(k+1)/k · sin(kt) ]
+
+Первые 10 коэффициентов тригонометрического ряда:
+  a_0/2 = -3.289868
+  k= 1:  a_k =  4.000000e+00,  b_k =  4.000000e+00
+  k= 2:  a_k = -1.000000e+00,  b_k = -2.000000e+00
+  k= 3:  a_k =  4.444444e-01,  b_k =  1.333333e+00
+  k= 4:  a_k = -2.500000e-01,  b_k = -1.000000e+00
+  k= 5:  a_k =  1.600000e-01,  b_k =  8.000000e-01
+  k= 6:  a_k = -1.111111e-01,  b_k = -6.666667e-01
+  k= 7:  a_k =  8.163265e-02,  b_k =  5.714286e-01
+  k= 8:  a_k = -6.250000e-02,  b_k = -5.000000e-01
+  k= 9:  a_k =  4.938272e-02,  b_k =  4.444444e-01
+  k=10:  a_k = -4.000000e-02,  b_k = -4.000000e-01
 </pre>
 </div>
 </div>
@@ -8142,7 +8202,7 @@ x(t) = A_1<em>cos(w_1</em>t) + A_2<em>sin(w_2</em>t)<br/>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">A1</span><span class="p">,</span> <span class="n">A2</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span>
@@ -8202,6 +8262,18 @@ x(t) = A_1<em>cos(w_1</em>t) + A_2<em>sin(w_2</em>t)<br/>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">x4</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span> <span class="s1">'k-'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'x(t)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">S4_cheb</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span> <span class="s1">'b--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Чебышев'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Чебышев 1 рода, N=16'</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Первые коэффициенты тригонометрического ряда (a_k, b_k):"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">: a_k = </span><span class="si">{</span><span class="n">ak</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2"> .4e</span><span class="si">}</span><span class="s2">,  b_k = </span><span class="si">{</span><span class="n">bk</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2"> .4e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Первые коэффициенты Чебышева C_k:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  C_</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">Ck</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s2"> .4e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Отношение max-ошибок (триг./Чебыш.) = </span><span class="si">{</span><span class="n">err_trig_max</span><span class="o">/</span><span class="n">err_cheb_max</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Отношение L2-ошибок  (триг./Чебыш.) = </span><span class="si">{</span><span class="n">L2_trig</span><span class="o">/</span><span class="n">L2_cheb</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8218,6 +8290,24 @@ x(t) = A_1<em>cos(w_1</em>t) + A_2<em>sin(w_2</em>t)<br/>
 <pre>Сравнение при N=16:
   Тригонометрический: max|err| = 1.923e+00,  L2 = 3.015e-01
   Чебышев 1 рода:     max|err| = 4.698e-08,  L2 = 4.639e-08
+
+Первые коэффициенты тригонометрического ряда (a_k, b_k):
+  k=1: a_k =  9.7368e-01,  b_k =  7.9642e-01
+  k=2: a_k = -2.7781e-02,  b_k =  1.6646e+00
+  k=3: a_k =  1.0607e-02,  b_k = -5.6639e-01
+  k=4: a_k = -5.6860e-03,  b_k =  3.6265e-01
+  k=5: a_k =  3.5615e-03,  b_k = -2.7172e-01
+
+Первые коэффициенты Чебышева C_k:
+  C_0 = -2.6005e-01
+  C_1 = -1.3103e+00
+  C_2 = -9.7218e-01
+  C_3 = -1.4593e+00
+  C_4 =  2.6407e-01
+  C_5 =  1.0446e+00
+
+Отношение max-ошибок (триг./Чебыш.) = 4.09e+07
+Отношение L2-ошибок  (триг./Чебыш.) = 6.50e+06
 </pre>
 </div>
 </div>
@@ -8239,20 +8329,6 @@ x(t) = A_1<em>cos(w_1</em>t) + A_2<em>sin(w_2</em>t)<br/>
 <h3 id="%D0%92%D1%8B%D0%B2%D0%BE%D0%B4-%D0%BF%D0%BE-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8E-4.6">Вывод по заданию 4.6<a class="anchor-link" href="#%D0%92%D1%8B%D0%B2%D0%BE%D0%B4-%D0%BF%D0%BE-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8E-4.6">¶</a></h3><p>Сравнил два способа приблизить гладкую функцию x(t) = cos(3t) + 2sin(5t) на отрезке [-1, 1] при N = 16.</p>
 <p>Тригонометрический многочлен дал ошибку около 1.92 (по максимуму) и 0.30 (в среднем квадратичном).
 Многочлен Чебышева дал ошибку порядка 5*10^-8, то есть почти в сто миллионов раз меньше</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3f9eb8ed-d00d-444a-b976-b719742166c4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
 </div>
 </div>
 </div>
