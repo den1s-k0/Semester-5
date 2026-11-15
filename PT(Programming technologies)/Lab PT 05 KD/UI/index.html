@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Такса</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">Такса</div>
+    <nav class="main-nav" aria-label="Главное меню">
+      <a href="#screen-home">Главная</a>
+      <a href="#screen-order">Заказать</a>
+      <a href="#screen-driver">Водителю</a>
+      <a href="#screen-admin">Администратору</a>
+      <a href="#screen-orders">Мои заказы</a>
+      <a href="#screen-login" class="btn btn--small">Войти</a>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <section id="screen-home" class="screen" aria-labelledby="home-title">
+	  <h1 id="home-title">Добро пожаловать в службу такси "Такса"</h1>
+	
+	  <div class="hero">
+	    <p>Закажите такси за 2 минуты: эконом или бизнес-класс, детское кресло, любимая музыка — всё по вашему выбору.</p>
+	    <a href="#screen-order" class="btn btn--primary">Заказать такси</a>
+	  </div>
+	
+	</section>
+
+	<section id="screen-login" class="screen" aria-labelledby="login-title">
+	  <h2 id="login-title">Вход в систему</h2>
+	  <form class="form" action="#" method="post" novalidate>
+	    <label for="login-phone">Телефон</label>
+	    <input id="login-phone" name="phone" type="tel" placeholder="+375 (29) 123-45-67" required>
+	
+	    <label for="login-password">Пароль</label>
+	    <input id="login-password" name="password" type="password" required>
+	
+	    <button type="submit" class="btn btn--primary">Войти</button>
+	    <button type="button" class="btn btn--ghost">Зарегистрироваться</button>
+	  </form>
+	</section>
+	
+	<section id="screen-order" class="screen" aria-labelledby="order-title">
+	  <h2 id="order-title">Оформление заказа</h2>
+	  <form class="form" action="#" method="post">
+	    <label for="order-address">Адрес подачи</label>
+	    <input id="order-address" name="address" type="text" required>
+	
+	    <fieldset>
+	      <legend>Тип услуги</legend>
+	      <label><input type="radio" name="class" value="econom" checked> Эконом</label>
+	      <label><input type="radio" name="class" value="business"> Бизнес</label>
+	    </fieldset>
+	
+	    <fieldset>
+	      <legend>Дополнительные опции</legend>
+	      <label><input type="checkbox" name="childseat"> Детское кресло</label>
+	      <label><input type="checkbox" name="music"> Музыка</label>
+	      <label><input type="checkbox" name="drinks"> Напитки</label>
+	      <label><input type="checkbox" name="snacks"> Закуски</label>
+	    </fieldset>
+	
+	    <label for="order-pref">Предпочтение по марке авто</label>
+	    <input id="order-pref" name="pref" type="text" placeholder="Например, Toyota">
+	
+	    <button type="submit" class="btn btn--primary">Подтвердить заказ</button>
+	    <a class="btn btn--small" href="#screen-error">Показать пример ошибки (нет водителя)</a>
+	  </form>
+	</section>
+	
+	<section id="screen-orders" class="screen" aria-labelledby="orders-title">
+	  <h2 id="orders-title">Мои заказы</h2>
+	
+	  <form class="toolbar" role="search">
+	    <input type="search" placeholder="Поиск по адресу..." aria-label="Поиск по адресу">
+	    <select aria-label="Фильтр по статусу">
+	      <option>Все статусы</option>
+	      <option>Новый</option>
+	      <option>Принят</option>
+	      <option>В пути</option>
+	      <option>Завершён</option>
+	      <option>Отменён</option>
+	    </select>
+	    <button type="button" class="btn">Сортировать по дате</button>
+	    <button type="button" class="btn">Сортировать по номеру</button>
+	  </form>
+	
+	  <table class="data-table">
+	    <thead>
+	      <tr><th>№</th><th>Адрес</th><th>Класс</th><th>Статус</th><th>Действия</th></tr>
+	    </thead>
+	    <tbody>
+		  <tr>
+			  <td>101</td><td>ул. Ленина, 5</td><td>Бизнес</td><td>В пути</td>
+			  <td><a class="btn btn--small" href="#screen-order-view">Просмотр</a></td>
+			</tr>
+			<tr>
+			  <td>100</td><td>пр. Мира, 12</td><td>Эконом</td><td>Завершён</td>
+			  <td><a class="btn btn--small" href="#screen-order-view">Просмотр</a></td>
+			</tr>
+			<tr>
+			  <td>99</td><td>ул. Советская, 3</td><td>Эконом</td><td>Новый</td>
+			  <td>
+			    <a class="btn btn--small" href="#screen-order-edit">Редактировать</a>
+			    <button class="btn btn--small btn--danger">Отменить</button>
+			  </td>
+			</tr>
+		</tbody>
+	  </table>
+	
+	  <nav class="pagination" aria-label="Постраничная навигация">
+	    <button class="btn btn--small" disabled>Предыдущая</button>
+	    <button class="btn btn--small">1</button>
+	    <button class="btn btn--small">2</button>
+	    <button class="btn btn--small">3</button>
+	    <button class="btn btn--small">Следующая</button>
+	  </nav>
+	</section>	
+	
+	<section id="screen-order-edit" class="screen" aria-labelledby="edit-title">
+	  <h2 id="edit-title">Редактирование заказа №99</h2>
+	  <form class="form">
+	    <label for="edit-address">Адрес подачи</label>
+	    <input id="edit-address" type="text" value="ул. Советская, 3">
+	    <label for="edit-status">Статус</label>
+	    <select id="edit-status">
+	      <option selected>Новый</option>
+	      <option>Отменён</option>
+	    </select>
+	    <button type="submit" class="btn btn--primary">Сохранить</button>
+	    <a class="btn btn--ghost" href="#screen-orders">Отмена</a>
+	  </form>
+	</section>
+	
+	<section id="screen-error" class="screen screen--error" aria-labelledby="error-title">
+	  <h2 id="error-title">Ошибка</h2>
+	  <p class="error-message">Свободных водителей в вашем районе не найдено. Попробуйте позже или выберите другой класс.</p>
+	  <a href="#screen-order" class="btn btn--primary">Вернуться к заказу</a>
+	</section>
+	
+	<section id="screen-driver" class="screen" aria-labelledby="driver-title">
+	  <h2 id="driver-title">Новые заказы для водителя</h2>
+	  <ul class="orders-list">
+	    <li class="card">
+	      <p><strong>Заказ №102</strong> — ул. Победы, 8 (Эконом)</p>
+	      <button class="btn btn--primary">Принять</button>
+	      <button class="btn btn--danger">Отказаться</button>
+	      <a class="btn btn--ghost" href="#screen-complaint">Пожаловаться</a>
+	    </li>
+	    <li class="card">
+	      <p><strong>Заказ №103</strong> — ул. Гагарина, 1 (Бизнес)</p>
+	      <button class="btn btn--primary">Принять</button>
+	      <button class="btn btn--danger">Отказаться</button>
+	      <a class="btn btn--ghost" href="#screen-complaint">Пожаловаться</a>
+	    </li>
+	  </ul>
+	</section>
+
+	<section id="screen-admin" class="screen" aria-labelledby="admin-title">
+	  <h2 id="admin-title">Панель администратора</h2>
+	
+	  <h3>Пользователи</h3>
+	  <form class="toolbar">
+	    <input type="search" placeholder="Поиск по ФИО или телефону...">
+	    <button type="button" class="btn">Добавить пользователя</button>
+	    <button type="button" class="btn">Сортировать по ФИО</button>
+	  </form>
+	
+	  <table class="data-table">
+	    <thead><tr><th>Код</th><th>ФИО</th><th>Роль</th><th>Телефон</th><th>Действия</th></tr></thead>
+	    <tbody>
+	      <tr><td>1</td><td>Иванов И.И.</td><td>Клиент</td><td>+375291234567</td>
+	        <td><button class="btn btn--small">Редактировать</button><button class="btn btn--small btn--danger">Удалить</button></td></tr>
+	      <tr><td>7</td><td>Петров П.П.</td><td>Водитель</td><td>+375297654321</td>
+	        <td><button class="btn btn--small">Редактировать</button><button class="btn btn--small btn--danger">Удалить</button></td></tr>
+	    </tbody>
+	  </table>
+	
+	  <h3>Статистика</h3>
+	  <form class="toolbar">
+	    <label for="stat-from">С</label><input id="stat-from" type="date">
+	    <label for="stat-to">По</label><input id="stat-to" type="date">
+	    <button type="button" class="btn btn--primary">Показать отчёт</button>
+	  </form>
+	  <ul class="stats-list">
+	    <li>Суммарный пробег всех водителей за период: <strong>1 234 км</strong></li>
+	    <li>Средний пробег на водителя: <strong>112 км</strong></li>
+	    <li>Водитель с максимальным рейтингом: <strong>Петров П.П. (4.9)</strong></li>
+	    <li>Водитель с минимальным рейтингом: <strong>Сидоров С.С. (3.2)</strong></li>
+	    <li>Свободных автомобилей: <strong>5</strong></li>
+	    <li>Забронированных автомобилей: <strong>2</strong></li>
+	  </ul>
+	</section>
+	
+	<section id="screen-complaint" class="screen" aria-labelledby="complaint-title">
+	  <h2 id="complaint-title">Подача жалобы</h2>
+	  <form class="form">
+	    <label for="complaint-order">Номер заказа</label>
+	    <input id="complaint-order" type="text" placeholder="Введите номер заказа" required>
+	    <label for="complaint-text">Текст жалобы</label>
+	    <textarea id="complaint-text" rows="4" placeholder="Опишите проблему..."></textarea>
+	    <button type="submit" class="btn btn--primary">Отправить</button>
+	    <a class="btn btn--ghost" href="#screen-driver">Отмена</a>
+	  </form>
+	</section>
+	
+	<section id="screen-order-view" class="screen" aria-labelledby="view-title">
+	  <h2 id="view-title">Просмотр заказа</h2>
+	  <dl class="order-details">
+	    <dt>Номер заказа</dt><dd>100</dd>
+	    <dt>Адрес подачи</dt><dd>пр. Мира, 12</dd>
+	    <dt>Класс</dt><dd>Эконом</dd>
+	    <dt>Статус</dt><dd>Завершён</dd>
+	    <dt>Дата</dt><dd>12.11.2026</dd>
+	  </dl>
+	  <a class="btn btn--ghost" href="#screen-orders">← Назад к списку</a>
+	</section>
+	
+  </main>
+
+  <footer class="app-footer">
+    <p>2026 Такса. Все права защищены.</p>
+    <p>Телефон поддержки: +375 (29) 919-10-65</p>
+  </footer>
+</body>
+</html>

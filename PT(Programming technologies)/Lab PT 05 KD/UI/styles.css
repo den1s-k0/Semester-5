@@ -1,0 +1,302 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #efefef;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: #2b2b2b;
+  color: #fff;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.main-nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.main-nav a:hover {
+  color: #e8d44d;
+}
+
+.main-nav .btn {
+  background: #e8d44d;
+  color: #222;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.main-nav .btn:hover {
+  background: #d6c23c;
+  color: #222;
+}
+
+.app-main {
+  flex: 1 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+.screen {
+  display: none;
+  background: #fff;
+  padding: 16px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+}
+
+main:not(:has(.screen:target)) #screen-home {
+  display: block;
+}
+
+.screen:target {
+  display: block;
+}
+
+.screen h1,
+.screen h2 {
+  margin-top: 0;
+}
+
+.screen--error {
+  border-left: 4px solid #c62828;
+}
+
+.error-message {
+  color: #c62828;
+  font-weight: bold;
+}
+
+.btn {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 1px solid #999;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  background: #e9e9e9;
+  color: #222;
+}
+
+.btn:hover {
+  background: #dcdcdc;
+}
+
+.btn--primary {
+  background: #e8d44d;
+  color: #222;
+  font-weight: bold;
+  border-color: #c7b63b;
+}
+
+.btn--primary:hover {
+  background: #d6c23c;
+}
+
+.btn--ghost {
+  background: #fff;
+  border: 1px solid #888;
+}
+
+.btn--ghost:hover {
+  background: #f2f2f2;
+}
+
+.btn--danger {
+  background: #c62828;
+  color: #fff;
+  border-color: #a51f1f;
+}
+
+.btn--danger:hover {
+  background: #a51f1f;
+}
+
+.btn--small {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-width: 440px;
+}
+
+.form label {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  padding: 7px;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.form fieldset {
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  padding: 9px;
+}
+
+.form legend {
+  padding: 0 4px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.toolbar input,
+.toolbar select {
+  padding: 6px;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.data-table th {
+  background: #e4e4e4;
+  font-weight: bold;
+}
+
+.services-grid,
+.orders-list {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.services-grid {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.card {
+  background: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.card p {
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+
+.pagination {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.note {
+  font-size: 12px;
+  color: #777;
+  font-style: italic;
+}
+
+.app-footer {
+  flex-shrink: 0;
+  background: #2b2b2b;
+  color: #cfcfcf;
+  text-align: center;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.app-footer p {
+  margin: 3px 0;
+}
+
+.stats-list {
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+body:has(#screen-order:target) a[href="#screen-order"],
+body:has(#screen-login:target) a[href="#screen-login"],
+body:has(#screen-driver:target) a[href="#screen-driver"],
+body:has(#screen-admin:target) a[href="#screen-admin"],
+body:has(#screen-home:target) a[href="#screen-home"] {
+  color: #e8d44d;
+}
+
+.order-details {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 6px 12px;
+  margin: 0 0 16px;
+  font-size: 14px;
+}
+.order-details dt { font-weight: bold; }
+.order-details dd { margin: 0; }
